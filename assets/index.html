@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/trellor.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="board-list">
+                <div id="board-list"></div>
+                <!-- <h2>Board List</h2>
+                <div class="board-item">Board 1</div>
+                <div class="board-item">Board 2</div> -->
+                <!-- <div><button id="boardBtn">Add a board...</button></div> -->
+            </div>
+
+            <div draggable="true" class="board-data" id="board-data">
+                <!-- <h2>Board 1</h2>
+                <div class="column">
+                    <h3>Column 1</h3>
+                    <div class="card">Card 1</div>
+                    <div class="card">Card 2</div>
+                    <button>Add a card...</button>
+                </div>
+                <div class="column">
+                    <h3>Column 2</h3>
+                    <div class="card">Card 1</div>
+                    <div class="card">Card 2</div>
+                    
+                </div> -->
+            </div>
+            <div id="columnBtn"></div>
+        </div>
+
+        <div id="createCard"></div>
+        <div id="updateCard"></div>
+
+        <div id="createCloumn"></div>
+        <div id="updateCloumn"></div>
+
+        <div id="createBoard"></div>
+        <div id="updateBoard"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="../js/constant.js"></script>
+        <script src="../js/trellor.js"></script>
+        <!-- <script>
+            if (localStorage.getItem("accessToken")) {
+                console.log(localStorage.getItem("accessToken"));
+                getSelf(function () {
+                    alert(
+                        "이미 로그인이 되어있습니다. 메인페이지로 이동합니다.",
+                    );
+                    window.location.replace("/index.html");d
+                });
+            }
+        </script> -->
+
+        <script>
+            var dragged;
+
+            /* events fired on the draggable target */
+            document.addEventListener("drag", function (event) {}, false);
+
+            document.addEventListener(
+                "dragstart",
+                function (event) {
+                    // store a reference to the dragged element
+                    dragged = event.target;
+                    // make it half transparent
+                    event.target.style.opacity = 0.5;
+                },
+                false,
+            );
+
+            document.addEventListener(
+                "dragend",
+                function (event) {
+                    // reset the transparency
+                    event.target.style.opacity = "";
+                },
+                false,
+            );
+
+            /* events fired on the drop targets */
+            document.addEventListener(
+                "dragover",
+                function (event) {
+                    // prevent default to allow drop
+                    event.preventDefault();
+                },
+                false,
+            );
+
+            document.addEventListener(
+                "dragenter",
+                function (event) {
+                    // highlight potential drop target when the draggable element enters it
+                    if (
+                        event.target.className == "column" ||
+                        event.target.className == "card"
+                    ) {
+                        event.target.style.background = "purple";
+                    }
+                },
+                false,
+            );
+
+            document.addEventListener(
+                "dragleave",
+                function (event) {
+                    // reset background of potential drop target when the draggable element leaves it
+                    if (
+                        event.target.className == "column" ||
+                        event.target.className == "card"
+                    ) {
+                        event.target.style.background = "";
+                    }
+                },
+                false,
+            );
+
+            document.addEventListener(
+                "drop",
+                function (event) {
+                    // prevent default action (open as link for some elements)
+                    event.preventDefault();
+                    // move dragged element to the location of the drop
+                    if (event.target.className == "column") {
+                        event.target.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        event.target.appendChild(dragged);
+                    } else if (event.target.className == "card") {
+                        event.target.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        event.target.parentNode.insertBefore(
+                            dragged,
+                            event.target,
+                        );
+                    }
+                },
+                false,
+            );
+        </script>
+    </body>
+</html>
