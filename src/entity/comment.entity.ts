@@ -21,7 +21,7 @@ export class Comment {
     content: string;
 
     @ManyToOne(() => User, (user) => user.comments, {
-        onDelete: "CASCADE",
+        eager: true,
         nullable: false,
     })
     user: Relation<User>;
@@ -33,7 +33,7 @@ export class Comment {
     updatedAt: Date;
 
     @ManyToOne(() => Card, (card) => card.comments, {
-        onDelete: "CASCADE",
+        eager: true,
         nullable: false,
     })
     card: Relation<Card>;

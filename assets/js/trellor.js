@@ -490,6 +490,26 @@ async function updateBoard(boardid) {
         });
 }
 
+async function InviteUser(userId, boardId) {
+    axios
+      .post(`/invited-users/${userId}/${boardId}`, null, 
+      {
+        userId: formData.get("inviteuserid"),
+        boardId: formData.get("inviteboardid"),
+    },
+    {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then(function (response) {
+        console.log(response.data); // 서버에서 받은 응답 데이터 처리
+      })
+      .catch(function (error) {
+        console.error(error); // 오류 처리
+      });
+  }
+
 // function getSelf(callback) {
 //     axios
 //         .get("/user/mee", {

@@ -42,7 +42,14 @@ export class UserService {
         return await this.userRepository.findOne({
             where: { id },
             select: ["id", "email", "name", "createdAt", "updatedAt"],
-            relations: { boards: true },
+        });
+    }
+
+    async findUserByIdWithBoards(id: number) {
+        return await this.userRepository.findOne({
+            where: { id },
+            select: ["id", "email", "name", "createdAt", "updatedAt"],
+            relations:{boards:true}
         });
     }
 
