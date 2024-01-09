@@ -2,6 +2,8 @@
 const boardListDiv = document.getElementById("board-list");
 const boardDataDiv = document.getElementById("board-data");
 const columnbtn = document.getElementById("columnBtn");
+const invitBtn = document.getElementById("invited_user");
+const inviteModal = document.getElementById("inviteModal");
 
 window.onload = function () {
     // const boardBtn = document.getElementById("boardBtn");
@@ -46,6 +48,63 @@ window.onload = function () {
                 </button>
             </div>`;
 
+            //초대 모달 기능
+            inviteModal.innerHTML += `
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            유저 초대
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">name</th>
+                            <th scope="col">email</th>
+                            <th scope="col">Button</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersinfo"> 
+                      
+                    </tbody>
+                    </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button onclick="inviteUser()" type="button" class="btn btn-primary">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>`;
+
+            // 초대버튼;
+            invitBtn.innerHTML += `
+            <div>
+                <button id="invite_btn"  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inviteModal">
+                share
+                </button>
+            </div>
+            `;
+            setTimeout(() => {
+                const invitebtn = document.getElementById("invite_btn");
+                invitebtn.addEventListener("shown.bs.modal", () => {});
+            }, 0);
+
             // columns.forEach((element) => {
             //     boardDataDiv.innerHTML += `<div class="column">12</div>`;
             // });
@@ -54,6 +113,35 @@ window.onload = function () {
             console.log(error);
         });
 };
+
+function inviteUser() {
+    const userinfo = document.getElementById("usersinfo");
+    userinfo.innerHTML = ``;
+
+    axios
+        .get("/user", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        .then(function (response) {
+            userlist = response.data;
+            console.log(userlist);
+
+            userlist.forEach((user) => {
+                userinfo.innerHTML += `
+                    <tr>
+                    <th scope="row">${user.name}</th>
+                    <td>${user.email}</td>
+                    <td><button>test</button></td>
+                    </tr>
+                `;
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
 //컴럼 조회
 async function updateBoardData(boardid) {
