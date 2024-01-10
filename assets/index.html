@@ -47,15 +47,6 @@
             <div id="columnBtn"></div>
         </div>
 
-        <div id="createCard"></div>
-        <div id="updateCard"></div>
-
-        <div id="createCloumn"></div>
-        <div id="updateCloumn"></div>
-
-        <!-- <div id="createBoard"></div> -->
-        <div id="updateBoard"></div>
-
         <div id="invited_user">
             <div>
                 <button
@@ -238,6 +229,156 @@
                         >
                             Create
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 보드 수정 모달 -->
+        <div
+            class="modal fade"
+            id="updateBoardModal"
+            data-bs-backdrop="static"
+            tabindex="-1"
+            data-bs-keyboard="false"
+            aria-labelledby="updateBoardModal"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            보드 수정
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="updateBoard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 컬럼 수정 모달 -->
+        <div
+            class="modal fade"
+            id="updatetColumnModal"
+            data-bs-backdrop="static"
+            tabindex="-1"
+            data-bs-keyboard="false"
+            aria-labelledby="updatetColumnModal"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            컬럼 수정
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="updateCloumn"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 컬럼 생성 모달 -->
+        <div
+            class="modal fade"
+            id="createColumnModal"
+            data-bs-backdrop="static"
+            tabindex="-1"
+            data-bs-keyboard="false"
+            aria-labelledby="createColumnModal"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            컬럼 생성
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="createCloumn"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--카드 생성 모달 -->
+        <div
+            class="modal fade"
+            id="createCardModal"
+            data-bs-backdrop="static"
+            tabindex="-1"
+            data-bs-keyboard="false"
+            aria-labelledby="createCardModal"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            카드 생성
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="createCard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--카드 수정 모달 -->
+        <div
+            class="modal fade"
+            id="updateCardModal"
+            data-bs-backdrop="static"
+            tabindex="-1"
+            data-bs-keyboard="false"
+            aria-labelledby="updateCardModal"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            카드 생성
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="updateCard"></div>
                     </div>
                 </div>
             </div>
