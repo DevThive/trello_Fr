@@ -18,7 +18,8 @@ function inviteUser() {
                     <tr>
                     <th scope="row">${user.name}</th>
                     <td>${user.email}</td>
-                    <td><button onclick="invite()">초대하기</button></td>
+                    <td id="boardlist"><td>
+                    <td><button onclick="invite(${user.id})">초대하기</button></td>
                     </tr>
                 `;
             });
@@ -28,9 +29,14 @@ function inviteUser() {
         });
 }
 
-async function invite() {
-    const userId = document.getElementById("userIdInput").value;
-    const boardId = document.getElementById("boardIdInput").value;
+//User에서 보드 부분도 같이 불러와야함
+// async function
+
+async function invite(userId) {
+    // const userId = document.getElementById("userIdInput").value;
+    // const boardId = document.getElementById("boardIdInput").value;
+    console.log(userId);
+    const boardId = 6;
     InviteUser(userId, boardId);
 }
 
