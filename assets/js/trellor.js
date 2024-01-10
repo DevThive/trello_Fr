@@ -38,13 +38,6 @@ window.onload = function () {
                     </li>
                 </div>`;
             });
-            //보드 생성 버튼
-            boardListDiv.innerHTML += `
-            <div>
-                <button onclick="createBoardform()" id="boardBtn">
-                    Add a board...
-                </button>
-            </div>`;
 
             // columns.forEach((element) => {
             //     boardDataDiv.innerHTML += `<div class="column">12</div>`;

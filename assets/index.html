@@ -17,6 +17,16 @@
                 <div class="board-item">Board 1</div>
                 <div class="board-item">Board 2</div> -->
                 <!-- <div><button id="boardBtn">Add a board...</button></div> -->
+                <div>
+                    <button
+                        onclick="setTimeout(createBoardform, 0)"
+                        id="boardBtn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#createBoardModal"
+                    >
+                        Add a board...
+                    </button>
+                </div>
             </div>
 
             <div draggable="true" class="board-data" id="board-data">
@@ -43,7 +53,7 @@
         <div id="createCloumn"></div>
         <div id="updateCloumn"></div>
 
-        <div id="createBoard"></div>
+        <!-- <div id="createBoard"></div> -->
         <div id="updateBoard"></div>
 
         <div id="invited_user">
@@ -182,6 +192,52 @@
                         >
                             Search
                         </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 보드 생성 모달 -->
+        <div
+            class="modal fade"
+            id="createBoardModal"
+            data-bs-backdrop="static"
+            tabindex="-1"
+            data-bs-keyboard="false"
+            aria-labelledby="createBoardModal"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            보드 생성
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="createBoard"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="createBoard()"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Create
+                        </button>
                     </div>
                 </div>
             </div>

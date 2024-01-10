@@ -12,8 +12,6 @@ function createBoardform() {
 
         <label for="content">Desc:</label><br>
         <textarea id="crboarddesc" name="crboarddesc"></textarea><br>
-    
-        <input type="button" onclick="createBoard()" value="등록">
     </form>
     `;
 }
