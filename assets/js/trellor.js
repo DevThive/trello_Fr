@@ -252,7 +252,7 @@ function createCardform(columnid) {
     <textarea id="crcardcontent" name="crcardcontent"></textarea><br>
 
     <label for="color">색상:</label><br>
-    <input type="color" id="crcardcolor" name="crcardcolorlor"><br>
+    <input type="color" id="crcardcolor" name="crcardcolor"><br>
 
     <label for="deadline">마감일:</label><br>
     <input type="datetime-local" id="crcarddeadline" name="crcarddeadline"><br>
@@ -314,7 +314,7 @@ async function createCard(columnid) {
                 content: formData.get("crcardcontent"),
 
                 // // 색깔 날짜 저장하는 부분 확인해야함
-                color: formData.get("crcardcolorlor"),
+                color: formData.get("crcardcolor"),
                 deadline: Date(formData.get("crcarddeadline")),
             },
             {
