@@ -93,12 +93,12 @@ window.onload = function () {
             </div>`;
 
             // 초대버튼;
-            invitBtn.innerHTML += `
+            inviteBtn.innerHTML += `
             <div>
-                <button id="invite_btn"  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inviteModal">
-                share
-                </button>
-            </div>
+            <button id="invite_btn"  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inviteModal">
+            share
+            </button>
+        </div>
             `;
             setTimeout(() => {
                 const invitebtn = document.getElementById("invite_btn");
@@ -133,7 +133,7 @@ function inviteUser() {
                     <tr>
                     <th scope="row">${user.name}</th>
                     <td>${user.email}</td>
-                    <td><button>test</button></td>
+                    <td><button onclick="inviteTest()">test</button></td>
                     </tr>
                 `;
             });
@@ -143,7 +143,37 @@ function inviteUser() {
         });
 }
 
-//컴럼 조회
+
+async function invite() {
+    const userId = document.getElementById("userIdInput").value;
+    const boardId = document.getElementById("boardIdInput").value;
+    InviteUser(userId, boardId);
+  }
+  
+  async function InviteUser(userId, boardId) {
+    axios
+      .post(`/invited-users/${userId}/${boardId}`,  
+      {
+        userId: userId,
+        boardId: boardId
+    },
+    {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then(function (response) {
+        alert("(invited-users) 유저초대에 성공하였습니다.");
+        console.log(response.data); 
+      })
+      .catch(function (error) {
+        console.log(error.response.data);
+      });
+  }
+
+
+
+//컬럼 조회
 async function updateBoardData(boardid) {
     boardDataDiv.innerHTML = ``;
     columnbtn.innerHTML = ``;
@@ -577,26 +607,6 @@ async function updateBoard(boardid) {
             console.log(error.response.data);
         });
 }
-
-async function InviteUser(userId, boardId) {
-    axios
-      .post(`/invited-users/${userId}/${boardId}`, null, 
-      {
-        userId: formData.get("inviteuserid"),
-        boardId: formData.get("inviteboardid"),
-    },
-    {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-      .then(function (response) {
-        console.log(response.data); // 서버에서 받은 응답 데이터 처리
-      })
-      .catch(function (error) {
-        console.error(error); // 오류 처리
-      });
-  }
 
 // function getSelf(callback) {
 //     axios
