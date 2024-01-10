@@ -34,7 +34,7 @@ export class UserService {
 
     async findAll() {
         return await this.userRepository.find({
-            select: ["email", "name", "createdAt", "updatedAt"],
+            select: ["id", "email", "name", "createdAt", "updatedAt"],
         });
     }
 
