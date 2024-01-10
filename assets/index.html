@@ -46,10 +46,36 @@
         <div id="createBoard"></div>
         <div id="updateBoard"></div>
 
-        <div id="invited_user"></div>
+        <div id="invited_user">
+            <div>
+                <button
+                    id="invite_btn"
+                    type="button"
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#inviteModal"
+                >
+                    share
+                </button>
+            </div>
+        </div>
 
-        <div id="alarm_Btn"></div>
+        <!-- 알람 버튼 -->
+        <div id="alarm_Btn">
+            <div>
+                <button
+                    id="alarm_btn"
+                    type="button"
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#alarmModal"
+                >
+                    alarm
+                </button>
+            </div>
+        </div>
 
+        <!-- 모달 기능 부분 -->
         <!-- 유저 초대 모달 -->
         <div
             class="modal fade"
@@ -59,7 +85,51 @@
             data-bs-keyboard="false"
             aria-labelledby="inviteModal"
             aria-hidden="true"
-        ></div>
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            유저 초대
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">name</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">Button</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersinfo"></tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="inviteUser()"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- 알림 모달 -->
         <div
@@ -69,7 +139,52 @@
             data-bs-keyboard="false"
             aria-labelledby="alarmModal"
             aria-hidden="true"
-        ></div>
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            알림
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">카드 ID</th>
+                                    <th scope="col" style="width: 70%">
+                                        메세지
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="alarminfo"></tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <!-- <button
+                            onclick=""
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Search
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script
             src="https://code.jquery.com/jquery-3.5.1.js"
@@ -85,6 +200,10 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../js/constant.js"></script>
         <script src="../js/trellor.js"></script>
+        <script src="../js/board.js"></script>
+        <script src="../js/card.js"></script>
+        <script src="../js/column.js"></script>
+        <script src="../js/inviteUser.js"></script>
 
         <!-- <script>
             if (localStorage.getItem("accessToken")) {
