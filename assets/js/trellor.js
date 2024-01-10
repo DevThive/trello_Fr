@@ -32,19 +32,13 @@ window.onload = function () {
                             <button class="dropbtn">메뉴</button>
                             <div class="dropdown-content">
                             <a onclick="deleteColumn()">삭제</a>
-                            <a onclick="updateBoardform(${board.id})">수정</a>
+                            <a onclick="setTimeout(updateBoardform(${board.id}), 0)" data-bs-toggle="modal"
+                            data-bs-target="#updateBoardModal">수정</a>
                             </div>
                         </div>
                     </li>
                 </div>`;
             });
-            //보드 생성 버튼
-            boardListDiv.innerHTML += `
-            <div>
-                <button onclick="createBoardform()" id="boardBtn">
-                    Add a board...
-                </button>
-            </div>`;
 
             // columns.forEach((element) => {
             //     boardDataDiv.innerHTML += `<div class="column">12</div>`;

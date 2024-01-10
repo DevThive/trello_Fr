@@ -22,14 +22,15 @@ async function updateBoardData(boardid) {
                             <button class="dropbtn">메뉴</button>
                             <div class="dropdown-content">
                             <a onclick="deleteColumn(${column.id})">삭제</a>
-                            <a onclick="updateColumnform(${column.id})">수정</a>
+                            <a onclick="setTimeout(updateColumnform(${column.id}), 0)" data-bs-toggle="modal"
+                            data-bs-target="#updatetColumnModal">수정</a>
                             </div>
                         </div>
                         </h3>
                         <div id="card-data-${index}"></div>
                     </div>
                     <div>
-                        <button onclick="createCardform(${column.id})" id="cardBtn">Add a card...</button>
+                        <button onclick="setTimeout(createCardform(${column.id}), 0)" id="cardBtn" data-bs-toggle="modal" data-bs-target="#createCardModal">Add a card...</button>
                     </div>
                 </div>`;
                 setTimeout(() => {
@@ -37,7 +38,7 @@ async function updateBoardData(boardid) {
                 }, 0);
             });
             //컬럼 생성 버튼
-            columnbtn.innerHTML += `<button onclick="createColumnform(${boardid})" id="boardBtn">Add a Column...</button>`;
+            columnbtn.innerHTML += `<button onclick="setTimeout(createColumnform(${boardid}), 0)" data-bs-toggle="modal" data-bs-target="#createColumnModal" id="boardBtn">Add a Column...</button>`;
         })
         .catch(function (error) {
             console.log(error);
@@ -71,8 +72,24 @@ function createColumnform(boardid) {
     <form id="createColumnform" method="POST">
         <label for="name">Column Name:</label><br>
         <input type="text" id="crcolumntitle" name="crcolumntitle"><br>
-        <input type="button" onclick="createColumn(${boardid})" value="등록">
+        
     </form>
+    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="onclick="createColumn(${boardid})"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Create
+                        </button>
+                    </div>
     `;
 }
 
@@ -105,7 +122,7 @@ async function createColumn(boardid) {
 // 컬럼 수정폼
 function updateColumnform(columnid) {
     console.log(columnid);
-    const createcolumn = document.getElementById("createCloumn");
+    const updatecolumn = document.getElementById("updateCloumn");
 
     axios
         .get("/columns/" + columnid, {
@@ -116,18 +133,35 @@ function updateColumnform(columnid) {
         .then(function (response) {
             const columninfo = response.data;
 
-            createcolumn.innerHTML = `
+            updatecolumn.innerHTML = `
             <form id="updateColumnform" method="POST">
                 <label for="name">Column Name:</label><br>
-                <input type="text" id="crcolumntitle" name="crcolumntitle" value="${columninfo.title}" ><br>
-                <input type="button" onclick="updateColumn(${columnid})" value="수정">
+                <input type="text" id="crcolumntitle" name="crcolumntitle" value="${columninfo.title}"><br>
+                
             </form>
+
+            <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="updateColumnn(${columnid})"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Create
+                        </button>
+                    </div>
             `;
         });
 }
 
 //컬럼 수정 기능
-async function updateColumn(columnid) {
+async function updateColumnn(columnid) {
     const formData = new FormData(document.getElementById("updateColumnform"));
 
     axios

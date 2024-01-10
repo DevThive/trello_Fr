@@ -18,7 +18,7 @@ async function updateCardData(columnid, index) {
                     <button class="dropbtn">메뉴</button>
                     <div class="dropdown-content">
                     <a onclick="deleteCard(${card.id})">삭제</a>
-                    <a onclick="updateCardform(${card.id})">수정</a>
+                    <a onclick="setTimeout(updateCardform(${card.id}), 0)" data-bs-toggle="modal" data-bs-target="#updateCardModal">수정</a>
                     </div>
                 </div>
               </div>`;
@@ -66,8 +66,26 @@ function createCardform(columnid) {
     <label for="deadline">마감일:</label><br>
     <input type="datetime-local" id="crcarddeadline" name="crcarddeadline"><br>
 
-    <input type="button" onclick="createCard(${columnid})" value="등록">
-</form>`;
+    
+</form>
+
+<div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="createCard(${columnid})"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Create
+                        </button>
+                    </div>
+`;
 }
 
 //카드 수정폼
@@ -100,9 +118,25 @@ function updateCardform(cardid) {
     
             <label for="deadline">마감일:</label><br>
             <input type="datetime-local" id="upcarddeadline" name="upcarddeadline" value="${formattedDate}"><br>
-    
-            <input type="button" onclick="updateCard(${cardid})" value="수정">
-        </form>`;
+        </form>
+        
+        <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="updateCard(${cardid})"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Create
+                        </button>
+                    </div>
+        `;
         })
         .catch(function (error) {
             console.log(error);

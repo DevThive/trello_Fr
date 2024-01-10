@@ -12,8 +12,6 @@ function createBoardform() {
 
         <label for="content">Desc:</label><br>
         <textarea id="crboarddesc" name="crboarddesc"></textarea><br>
-    
-        <input type="button" onclick="createBoard()" value="등록">
     </form>
     `;
 }
@@ -46,6 +44,7 @@ async function createBoard() {
 }
 
 //보드 수정 폼
+// 보드 수정 모달 부분에서 footer부분에 버튼을 넣기 위해서 innerHTML에 넣음.
 function updateBoardform(boardid) {
     const updateboard = document.getElementById("updateBoard");
 
@@ -69,8 +68,26 @@ function updateBoardform(boardid) {
                 <label for="content">Desc:</label><br>
                 <textarea id="upboarddesc" name="upboarddesc">${boardinfo.description}</textarea><br>
             
-                <input type="button" onclick="updateBoard(${boardid})" value="등록">
+                
             </form>
+
+            
+            <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onclick="updateBoard(${boardid})"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            Create
+                        </button>
+                    </div>
             `;
         });
 }
