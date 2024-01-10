@@ -4,6 +4,7 @@ const boardDataDiv = document.getElementById("board-data");
 const columnbtn = document.getElementById("columnBtn");
 const invitBtn = document.getElementById("invited_user");
 const inviteModal = document.getElementById("inviteModal");
+const alarmBtn = document.getElementById("alarm_Btn");
 
 window.onload = function () {
     // const boardBtn = document.getElementById("boardBtn");
@@ -105,6 +106,13 @@ window.onload = function () {
                 invitebtn.addEventListener("shown.bs.modal", () => {});
             }, 0);
 
+            alarmBtn.innerHTML = ` 
+            <div>
+                <button id="alarm_btn"  type="button" class="btn" data-bs-toggle="modal" data-bs-target="#alarmModal">
+                alarm
+                </button>
+            </div>`;
+
             // columns.forEach((element) => {
             //     boardDataDiv.innerHTML += `<div class="column">12</div>`;
             // });
@@ -133,7 +141,7 @@ function inviteUser() {
                     <tr>
                     <th scope="row">${user.name}</th>
                     <td>${user.email}</td>
-                    <td><button>test</button></td>
+                    <td><button>초대하기</button></td>
                     </tr>
                 `;
             });

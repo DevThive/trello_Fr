@@ -3,7 +3,7 @@
 }
 .board-list {
     width: 200px;
-    height: 300px;
+    height: 350px;
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
@@ -16,7 +16,7 @@
 }
 .board-data {
     width: 1000px;
-    height: 300px;
+    height: 350px;
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
