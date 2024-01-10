@@ -83,7 +83,7 @@ function createColumnform(boardid) {
                             Close
                         </button>
                         <button
-                            onclick="onclick="createColumn(${boardid})"
+                            onclick="createColumn(${boardid})"
                             type="button"
                             class="btn btn-primary"
                         >
