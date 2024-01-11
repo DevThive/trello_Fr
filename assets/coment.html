@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/trellor.css" />
+        <title>CARD COMENTS</title>
+        <style>
+        
+        </style>
+    </head>
+    <body>
+        <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#commentModal"
+        >
+            댓글 창 열기
+        </button>
+
+        <div class="modal" id="commentModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">댓글 창</h4>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                        >
+                            &times;
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="commentForm">
+                            <div class="form-group">
+                                <label for="comment">댓글:</label>
+                                <textarea
+                                    class="form-control"
+                                    id="comment"
+                                    rows="3"
+                                    required
+                                ></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom">
+                                댓글 달기
+                            </button>
+                        </form>
+
+                        <div id="commentList"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                        >
+                            닫기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script src="./js/coment.js"></script>
+    </body>
+</html>

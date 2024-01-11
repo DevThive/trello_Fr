@@ -104,3 +104,9 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+.btn-custom {
+    background-color: #007bff;
+    color: #fff;
+    margin-left: 5px;
+}
